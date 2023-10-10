@@ -2,7 +2,7 @@
 
 namespace HorizonFramework\Core\Config;
 
-class Config
+class Project
 {
 
 }
