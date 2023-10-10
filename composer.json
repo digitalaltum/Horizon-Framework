@@ -1,0 +1,13 @@
+{
+    "name": "digitalaltum/horizon",
+    "description": "Horizon Framework",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HorizonFramework\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
