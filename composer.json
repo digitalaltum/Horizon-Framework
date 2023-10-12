@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "HorizonFramework\\": "src/"
-        }
+        },
+        "files": [
+            "src/Core/Helpers/Global.php"
+        ]
     },
     "minimum-stability": "dev",
     "require": {}
