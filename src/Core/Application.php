@@ -2,15 +2,9 @@
 
 namespace HorizonFramework\Core;
 
-use Dotenv\Dotenv;
-
 class Application
 {
-
     public static function start($base_path, $time) {
-
-        
-
         return new self($base_path, $time);
     }
 

@@ -4,12 +4,11 @@ namespace HorizonFramework\Core\CLI;
 
 class Kernel
 {
-
     private static $instance;
 
     private function __construct($basePath)
     {
-        $app = require_once  $basePath . "/config/app.php";
+        $app = require_once $basePath . "/config/app.php";
 
         print_r($app);
         
