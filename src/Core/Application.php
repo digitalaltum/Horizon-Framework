@@ -2,13 +2,11 @@
 
 namespace HorizonFramework\Core;
 
-class Application
-{
-    public static function start($baseRoot, $starTime)
-    {
-        return new self($baseRoot, $starTime);
-    }
+use HorizonFramework\Core\Bases\BaseApplication;
 
+class Application extends BaseApplication
+{
+    private static $instances;
     private $baseRoot;
     private $starTime;
 
@@ -18,8 +16,18 @@ class Application
         $this->starTime = $starTime;
     }
 
+    /**
+     * Crea una unica instancia de una clase cualquiera.
+     * @param mixed $instance
+     * 
+     * @return static
+     */
     public function singleton($instance)
     {
-        $kernel = $instance::mount($this->baseRoot, $this->starTime);
+        if (!isset(self::$instances[$instance])) {
+            self::$instances[$instance] = new $instance($this->baseRoot, $this->starTime);
+        }
+        
+        return self::$instances[$instance];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists("env1")) {
+if (! function_exists("env")) {
 
     /**
      * Leer configuracion de entorno

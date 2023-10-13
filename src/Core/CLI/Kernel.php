@@ -6,9 +6,7 @@ use Dotenv\Dotenv;
 
 class Kernel
 {
-    private static $instance;
-
-    private function __construct($baseRoot, $starTime)
+    public function __construct($baseRoot, $starTime)
     {
         //1. Cargar el entorno.
         $dotenv = Dotenv::createImmutable($baseRoot);
@@ -32,14 +30,5 @@ class Kernel
             fclose($fileCache);
         }
        
-    }
-
-    public static function mount($baseRoot, $starTime)
-    {
-        if (self::$instance === null) {
-            self::$instance = new self($baseRoot, $starTime);
-        }
-
-        return self::$instance;
     }
 }
