@@ -4,30 +4,34 @@ namespace HorizonFramework\Core\CLI;
 
 class Interpreter
 {
+    /* Registro de comandos. */
     const COMMANDS = [
         'info'  => \HorizonFramework\Core\CLI\Commands\Info::class,
         'serve' => \HorizonFramework\Core\CLI\Commands\Serve::class,
     ];
 
-    private $all;
+    /* Propiedades del objeto */
     private $command;
     private $flags;
 
-    public function __construct()
+    /**
+     * Recibe una instancia de la clase Argv
+     * @param mixed $argv
+     */
+    public function __construct($argv)
     {
-
-        $this->all = $_SERVER["argv"];
-        $this->command = $_SERVER["argv"][1];
-        $this->flags = array_slice($_SERVER["argv"], 2);
-
-        $this->run();
+        $this->command = $argv->command;
+        $this->flags = $argv->flags;
     }
 
-    private function run()
+    /**
+     * ejecuta los comandos.
+     * @return static
+     */
+    public function run()
     {
         $class = self::COMMANDS;
         (new $class[$this->command])->handle();
     }
-
 
 }

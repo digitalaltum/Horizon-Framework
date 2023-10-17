@@ -2,33 +2,29 @@
 
 namespace HorizonFramework\Core\CLI;
 
-use Dotenv\Dotenv;
+use HorizonFramework\Core\Config\Config;
 
 class Kernel
 {
+    /**
+     * Genera la antesala a cualquier ejecucion de comandos por CLI.
+     * @param mixed $baseRoot
+     * @param mixed $starTime
+     */
     public function __construct($baseRoot, $starTime)
     {
-        //1. Cargar el entorno.
-        $dotenv = Dotenv::createImmutable($baseRoot);
-        $dotenv->load();
+        $config = new Config($baseRoot, $starTime);
+    }
 
-        if (! file_exists($baseRoot . "/bootstrap/cache/config.php")) {
-
-            //2. Leer la configuracion
-            $config = require_once $baseRoot ."/config/app.php";
-    
-            //3. crear arreglo definitivo
-            $config = array_merge([
-                'base_root' => $baseRoot,
-                'start_app' => $starTime,
-            ], $config);
-            
-            //4. Crear Cache
-            $cache = "<?php return " . var_export($config, true) . ";";
-            $fileCache = fopen($baseRoot . "/bootstrap/cache/config.php", 'w');
-            fwrite($fileCache, $cache);
-            fclose($fileCache);
-        }
-       
+    /**
+     * Se encarga de la ejecucion de los comandos y de retornar el estatus de la ejecucion.
+     * @param mixed $inputCLI
+     * @param mixed $interpreter
+     * 
+     * @return bool
+     */
+    public function handle($inputCLI, $interpreter)
+    {
+        return new $interpreter($inputCLI);
     }
 }
