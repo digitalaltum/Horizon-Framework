@@ -6,11 +6,12 @@ abstract class BaseApplication
 {
 
     /**
-     * Para crear una instancia de la clase hija Hija::start(...)
-     * @param mixed $baseRoot
-     * @param mixed $starTime
+     * Método estático para iniciar una instancia de la clase hija. Se recomienda usar Hija::start(...).
+     *
+     * @param mixed $baseRoot Ruta base de la aplicación.
+     * @param mixed $starTime Tiempo de inicio de la aplicación.
      * 
-     * @return static
+     * @return static Una nueva instancia de la clase hija.
      */
     public static function start($baseRoot, $starTime)
     {
@@ -18,10 +19,11 @@ abstract class BaseApplication
     }
 
     /**
-     * Pra garantizar la unicializacion una unica vez de una clase
-     * @param mixed $instance
+     * Método abstracto para garantizar la inicialización única de una clase como singleton.
+     *
+     * @param mixed $instance Instancia de la clase que se desea manejar como singleton.
      * 
-     * @return static
+     * @return static La instancia de la clase.
      */
     abstract public function singleton($instance);
     

@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Console;
+
+use HorizonFramework\Core\Bases\BaseCommands;
+
+class {{NAME_CLASS}} extends BaseCommands
+{
+    public $name = "{{NAME_COMMAND}}";
+
+    public $description = "{{DESCRIPTION}}";
+
+    public function handle()
+    {
+        //Your Code...
+    }
+}
